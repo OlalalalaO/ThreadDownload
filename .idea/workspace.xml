@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e2eaba6-7063-4398-b14f-bdcb10415074" name="Changes" comment="update ignore again 2" />
+    <list default="true" id="1e2eaba6-7063-4398-b14f-bdcb10415074" name="Changes" comment="update ignore again 4">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +85,7 @@
       <workItem from="1651905044449" duration="3186000" />
       <workItem from="1651913204218" duration="657000" />
       <workItem from="1651913896681" duration="405000" />
-      <workItem from="1651914334374" duration="657000" />
+      <workItem from="1651914334374" duration="894000" />
     </task>
     <task id="LOCAL-00001" summary="update ignore">
       <created>1651914165244</created>
@@ -113,7 +115,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651914651943</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update ignore again 3">
+      <created>1651915076221</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651915076221</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update ignore again 4">
+      <created>1651915136362</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651915136362</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,7 +151,9 @@
     <MESSAGE value="update ignore again" />
     <MESSAGE value="update ignore again 1" />
     <MESSAGE value="update ignore again 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="update ignore again 2" />
+    <MESSAGE value="update ignore again 3" />
+    <MESSAGE value="update ignore again 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="update ignore again 4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
