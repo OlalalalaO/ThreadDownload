@@ -1,4 +1,4 @@
-package TestDemo;
+package DownloadFiles;
 
 import utils.HttpUtils;
 
@@ -9,7 +9,8 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.concurrent.CountDownLatch;
 
-public class TestDown implements Runnable {
+
+public class DownloadFilesThread implements Runnable {
     private int index;
     private String url;
 
@@ -39,7 +40,7 @@ public class TestDown implements Runnable {
         this.latch = latch;
     }
 
-    public TestDown(int index, String url, CountDownLatch latch) {
+    public DownloadFilesThread(int index, String url, CountDownLatch latch) {
         this.index = index;
         this.url = url;
         this.latch = latch;

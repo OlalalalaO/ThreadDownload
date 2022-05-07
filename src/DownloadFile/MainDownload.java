@@ -1,3 +1,5 @@
+package DownloadFile;
+
 import utils.HttpUtils;
 
 import java.io.File;
@@ -11,6 +13,7 @@ import java.util.Map;
 /**
  * time: 2020/7/15 15:15
  * author: olalalao
+ * 下载一个文件
  */
 public class MainDownload {
     public static void main(String[] args) throws IOException {
