@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e2eaba6-7063-4398-b14f-bdcb10415074" name="Changes" comment="update ignore">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="1e2eaba6-7063-4398-b14f-bdcb10415074" name="Changes" comment="update ignore again">
+      <change beforePath="$PROJECT_DIR$/ThreadDownload.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,15 +30,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RebelAgentSelection">
     <selection>jr</selection>
   </component>
@@ -85,7 +84,7 @@
       <updated>1651905042753</updated>
       <workItem from="1651905044449" duration="3186000" />
       <workItem from="1651913204218" duration="657000" />
-      <workItem from="1651913896681" duration="306000" />
+      <workItem from="1651913896681" duration="405000" />
     </task>
     <task id="LOCAL-00001" summary="update ignore">
       <created>1651914165244</created>
@@ -94,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651914165244</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update ignore again">
+      <created>1651914258551</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1651914258551</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,7 +119,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update ignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="update ignore" />
+    <MESSAGE value="update ignore again" />
+    <option name="LAST_COMMIT_MESSAGE" value="update ignore again" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
