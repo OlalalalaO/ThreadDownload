@@ -11,4 +11,10 @@ public class HttpUtils {
         return (HttpURLConnection) httpUrl.openConnection();
     }
 
+
+    public static HttpURLConnection getHttpUrlConnection(String url, Long start, Long end) throws IOException {
+        HttpURLConnection httpUrlConnection = getHttpUrlConnection(url);
+        httpUrlConnection.setRequestProperty("Range", "bytes=" + start + "-" + end);
+        return httpUrlConnection;
+    }
 }
