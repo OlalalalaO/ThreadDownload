@@ -12,7 +12,7 @@ import java.util.concurrent.*;
 public class ThreadDownload {
 
     //creat a ThreadPool
-    private static final ThreadPoolExecutor executorService = new ThreadPoolExecutor(5, 5, 1000L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+    private static final ThreadPoolExecutor executorService = new ThreadPoolExecutor(Constant.DOWNLOAD_THREAD_NUM, Constant.DOWNLOAD_THREAD_NUM, 1000L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -57,4 +57,5 @@ public class ThreadDownload {
         }
         System.out.println("文件合并完成");
     }
+
 }
