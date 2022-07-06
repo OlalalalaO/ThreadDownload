@@ -9,17 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class ThreadDownload {
+public class MultiThreadDownload {
 
     //creat a ThreadPool
-    private static final ThreadPoolExecutor executorService = new ThreadPoolExecutor(Constant.DOWNLOAD_THREAD_NUM, Constant.DOWNLOAD_THREAD_NUM, 1000L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+    private static final ThreadPoolExecutor executorService = new ThreadPoolExecutor(Constant.DOWNLOAD_THREAD_NUM + 1, Constant.DOWNLOAD_THREAD_NUM + 1, 1000L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
 
 
-    public static void main(String[] args) throws IOException, InterruptedException {
-        CountDownLatch countDownLatch = new CountDownLatch(Constant.DOWNLOAD_THREAD_NUM);
+    public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
+        List<Future<Boolean>> futures = new ArrayList<>();
         HttpURLConnection httpUrlConnection = HttpUtils.getHttpUrlConnection(Constant.DOWNLOAD_URL);
         String contentLength = httpUrlConnection.getHeaderField("Content-Length");
-        System.out.println("文件大小：" + contentLength);
+        ShowSpeedThread.FILE_SIZE.set(Long.parseLong(contentLength));
+        long fileSize = Long.parseLong(contentLength) / 1024 / 1024;
+        System.out.println("文件大小：" + fileSize + "MB");
         long splitFileSize = Long.parseLong(contentLength) / Constant.DOWNLOAD_THREAD_NUM;
         String filePath = new File("").getCanonicalPath();
         filePath = filePath + "\\download";
@@ -34,10 +36,13 @@ public class ThreadDownload {
                 end = Long.parseLong(contentLength);
             }
             String url = Constant.DOWNLOAD_URL;
-            ThreadSplit threadSplit = new ThreadSplit(i, start, end, url, filePath, countDownLatch);
-            executorService.submit(threadSplit);
+            futures.add(executorService.submit(new ThreadSplitThread(i, start, end, url, filePath)));
         }
-        countDownLatch.await();
+        ShowSpeedThread showSpeedThread = new ShowSpeedThread();
+        futures.add(executorService.submit(showSpeedThread));
+        for (Future<Boolean> future : futures) {
+            future.get();
+        }
         executorService.shutdown();
         String firstFilePath = filePath + "\\" + Constant.DOWNLOAD_URL.substring(Constant.DOWNLOAD_URL.lastIndexOf("/") + 1);
         File mergeFile = new File(firstFilePath);
@@ -55,6 +60,7 @@ public class ThreadDownload {
             File tempFile = new File(tempFilePath);
             tempFile.delete();
         }
+        System.out.println();
         System.out.println("文件合并完成");
     }
 
