@@ -36,8 +36,9 @@ public class ThreadSplitThread implements Callable<Boolean> {
             if (!downloadFile.exists()) {
                 downloadFile.createNewFile();
             } else {
-                if (downloadFile.length() == end - start) {
-                    System.out.println("线程" + index + "已完成");
+                if (downloadFile.length() == end - start + 1) {
+                    System.out.println("文件" + index + "已下载");
+                    ShowSpeedThread.DOWNLOAD_SIZE.addAndGet(downloadFile.length());
                     return true;
                 }
                 offset = downloadFile.length();
@@ -54,6 +55,7 @@ public class ThreadSplitThread implements Callable<Boolean> {
                 raf.write(buffer, 0, ch);
                 ShowSpeedThread.DOWNLOAD_SIZE.addAndGet(ch);
             }
+            System.out.println("文件" + index + "下载完成, size: " + downloadFile.length());
             raf.close();
             inputStream.close();
             httpUrlConnection.disconnect();

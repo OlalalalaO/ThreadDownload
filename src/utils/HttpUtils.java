@@ -8,7 +8,9 @@ public class HttpUtils {
 
     public static HttpURLConnection getHttpUrlConnection(String url) throws IOException {
         URL httpUrl = new URL(url);
-        return (HttpURLConnection) httpUrl.openConnection();
+        HttpURLConnection httpURLConnection = (HttpURLConnection) httpUrl.openConnection();
+        httpURLConnection.setRequestProperty("connection", "Keep-Alive");
+        return httpURLConnection;
     }
 
 
