@@ -5,5 +5,5 @@
  java -jar ThreadDownload.jar download_url(only support http/https/ftp) threadNum(1-64)`
 ```
 例:
-![image](https://github.com/OlalalalaO/ThreadDownload/images/img.png)
+![image](https://github.com/OlalalalaO/ThreadDownload/tree/master/images/img.png)
 
