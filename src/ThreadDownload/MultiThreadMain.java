@@ -62,7 +62,6 @@ public class MultiThreadMain {
             future.get();
         }
         executorService.shutdown();
-        System.out.println("开始合并文件");
         String firstFilePath = filePath + "\\" + Constant.DOWNLOAD_URL.substring(Constant.DOWNLOAD_URL.lastIndexOf("/") + 1);
         File mergeFile = new File(firstFilePath);
         mergeFile.createNewFile();
@@ -79,7 +78,7 @@ public class MultiThreadMain {
             File tempFile = new File(tempFilePath);
             tempFile.delete();
         }
-        System.out.println("文件合并完成, 总耗时：" + (System.currentTimeMillis() - begin) / 1000 + "秒");
+        System.out.println("文件下载完成, 总耗时：" + (System.currentTimeMillis() - begin) / 1000 + "秒");
     }
 
 }
