@@ -19,4 +19,8 @@ public class HttpUtils {
         httpUrlConnection.setRequestProperty("Range", "bytes=" + start + "-" + end);
         return httpUrlConnection;
     }
+
+    public static boolean enableBreakPoint(HttpURLConnection httpUrlConnection) {
+        return httpUrlConnection.getHeaderField("Accept-Ranges").equals("bytes");
+    }
 }

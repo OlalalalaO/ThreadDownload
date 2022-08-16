@@ -1,6 +1,7 @@
 package ThreadDownload;
 
 import constant.Constant;
+import utils.DownloadUtils;
 import utils.HttpUtils;
 
 import java.io.*;
@@ -9,28 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class MultiThreadDownload {
-
+public class MultiThreadMain {
+    //create a thread pool
+    private static ExecutorService executorService = null;
     public static void main(String[] args) throws IOException, InterruptedException, ExecutionException {
-        System.out.println(args.length);
-        if (args.length != 2) {
-            System.out.println("请输入完整参数");
+        String msg = DownloadUtils.parameterVerification(args);
+        if (!msg.equals("success")) {
+            System.out.println(msg);
             return;
         }
-        if (!args[0].matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")) {
-            System.out.println("请输入正确的下载地址");
-            return;
-        }
-        if (Integer.parseInt(args[1]) > 64 || Integer.parseInt(args[1]) < 1) {
-            System.out.println("请输入正确的线程数(范围1-64)");
-        }
-
-        System.out.println("下载地址：" + args[0] + ", 线程数：" + args[1]);
         Constant.DOWNLOAD_URL = args[0];
-        Constant.DOWNLOAD_THREAD_NUM = Integer.parseInt(args[1]);
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(Constant.DOWNLOAD_THREAD_NUM + 1, Constant.DOWNLOAD_THREAD_NUM + 1, 1000L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
-        List<Future<Boolean>> futures = new ArrayList<>();
         HttpURLConnection httpUrlConnection = HttpUtils.getHttpUrlConnection(Constant.DOWNLOAD_URL);
+        if (HttpUtils.enableBreakPoint(httpUrlConnection)) {
+            Constant.DOWNLOAD_THREAD_NUM = Integer.parseInt(args[1]);
+        } else {
+            System.out.println("不支持断点续传，调用单线程下载");
+            Constant.DOWNLOAD_THREAD_NUM = 1;
+        }
+        System.out.println("下载地址：" + args[0] + ", 线程数：" + args[1]);
+        executorService = new ThreadPoolExecutor(Constant.DOWNLOAD_THREAD_NUM + 1, Constant.DOWNLOAD_THREAD_NUM + 1, 1000L, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+        List<Future<Boolean>> futures = new ArrayList<>();
         //get header
         String contentLength = httpUrlConnection.getHeaderField("Content-Length");
         ShowSpeedThread.FILE_SIZE.set(Long.parseLong(contentLength));
